@@ -1,0 +1,13 @@
+CUSTOMER
+   │
+   └── ACCOUNT
+          │
+          └── TRANSACTION
+                  │
+                  ├── FRAUD OUTCOME
+                  │
+                  └── FRAUD ALERT
+                         │
+                         ├── FRAUD RULE
+                         │
+                         └── INVESTIGATION CASE
