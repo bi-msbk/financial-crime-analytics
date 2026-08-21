@@ -1,0 +1,21 @@
+channel,transaction_type,transaction_count,fraud_transaction_count,fraud_rate_pct,fraud_loss,average_transaction_amount
+Mobile,Transfer,100146,4004.0,3.9982,1198589.49,91.22
+Online,Transfer,119823,4634.0,3.8674,1362688.4,90.86
+Mobile,Direct Debit,49834,907.0,1.82,341715.65,90.84
+Online,Cash Withdrawal,60402,1092.0,1.8079,436745.64,91.45
+Mobile,Cash Withdrawal,50174,884.0,1.7619,340688.27,91.07
+Online,Direct Debit,59986,1054.0,1.7571,424153.79,90.79
+Online,Card Purchase,360549,6275.0,1.7404,2510261.82,91.09
+Mobile,Card Purchase,299213,5184.0,1.7325,2061106.55,90.78
+ATM,Transfer,39979,526.0,1.3157,220757.05,90.81
+Card Present,Transfer,120394,1580.0,1.3124,702431.29,91.01
+Branch,Transfer,20064,250.0,1.246,116363.2,91.1
+Branch,Direct Debit,9893,55.0,0.5559,33400.38,90.92
+Card Present,Cash Withdrawal,60288,333.0,0.5523,188884.19,90.88
+ATM,Direct Debit,19837,102.0,0.5142,59465.58,91.84
+Card Present,Card Purchase,359243,1805.0,0.5024,1080960.71,91.13
+ATM,Card Purchase,119666,599.0,0.5006,349703.81,90.82
+Card Present,Direct Debit,60192,296.0,0.4918,175738.31,91.1
+Branch,Cash Withdrawal,10051,49.0,0.4875,26305.63,90.67
+Branch,Card Purchase,60243,280.0,0.4648,173160.88,91.06
+ATM,Cash Withdrawal,20023,91.0,0.4545,56692.74,90.01

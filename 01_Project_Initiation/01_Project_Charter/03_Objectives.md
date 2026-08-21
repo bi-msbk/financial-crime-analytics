@@ -1,6 +1,6 @@
 # Project Objectives
 
-## OBJ-001 — Understand Fraud Exposure
+## OBJ-001 â€” Understand Fraud Exposure
 
 Quantify:
 
@@ -10,7 +10,7 @@ Quantify:
 - Average fraud value
 - Fraud trends
 
-## OBJ-002 — Identify Fraud Patterns
+## OBJ-002 â€” Identify Fraud Patterns
 
 Analyse relationships between fraud and:
 
@@ -25,7 +25,7 @@ Analyse relationships between fraud and:
 - Time of day
 - Account characteristics
 
-## OBJ-003 — Identify High-Risk Activity
+## OBJ-003 â€” Identify High-Risk Activity
 
 Develop analytical indicators that can help identify:
 
@@ -35,7 +35,7 @@ Develop analytical indicators that can help identify:
 - Potential account takeover
 - Unusual transaction behaviour
 
-## OBJ-004 — Evaluate Existing Controls
+## OBJ-004 â€” Evaluate Existing Controls
 
 Determine:
 
@@ -44,11 +44,11 @@ Determine:
 - Which rules generate excessive alerts
 - Where potential control gaps exist
 
-## OBJ-005 — Support Fraud Investigators
+## OBJ-005 â€” Support Fraud Investigators
 
 Develop analytical views that allow Fraud Operations to prioritise suspicious activity.
 
-## OBJ-006 — Support Management
+## OBJ-006 â€” Support Management
 
 Provide executives with:
 

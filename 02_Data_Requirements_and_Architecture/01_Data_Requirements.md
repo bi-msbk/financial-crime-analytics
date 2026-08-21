@@ -321,7 +321,7 @@ The exact start and end dates will be defined in the Synthetic Data Specificatio
 
 Data requirements shall be traceable through:
 
-**Business Requirements → Analytical Questions → Functional Requirements → KPIs → Data Fields → Analytical Outputs**
+**Business Requirements â†’ Analytical Questions â†’ Functional Requirements â†’ KPIs â†’ Data Fields â†’ Analytical Outputs**
 
 Detailed field-level definitions will be maintained in the Data Dictionary.
 

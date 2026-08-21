@@ -57,7 +57,7 @@ Examples:
 
 ---
 
-# 2. Customer — dim_customer
+# 2. Customer â€” dim_customer
 
 | Field | Data Type | Key | Required | Definition | Example |
 |---|---|---|---|---|---|
@@ -71,7 +71,7 @@ Examples:
 
 ---
 
-# 3. Account — dim_account
+# 3. Account â€” dim_account
 
 | Field | Data Type | Key | Required | Definition | Example |
 |---|---|---|---|---|---|
@@ -85,7 +85,7 @@ Examples:
 
 ---
 
-# 4. Merchant — dim_merchant
+# 4. Merchant â€” dim_merchant
 
 | Field | Data Type | Key | Required | Definition | Example |
 |---|---|---|---|---|---|
@@ -99,7 +99,7 @@ Examples:
 
 ---
 
-# 5. Device — dim_device
+# 5. Device â€” dim_device
 
 | Field | Data Type | Key | Required | Definition | Example |
 |---|---|---|---|---|---|
@@ -112,7 +112,7 @@ Examples:
 
 ---
 
-# 6. Geography — dim_geography
+# 6. Geography â€” dim_geography
 
 | Field | Data Type | Key | Required | Definition | Example |
 |---|---|---|---|---|---|
@@ -128,7 +128,7 @@ Exact customer addresses will not be generated.
 
 ---
 
-# 7. Fraud Rule — dim_fraud_rule
+# 7. Fraud Rule â€” dim_fraud_rule
 
 | Field | Data Type | Key | Required | Definition | Example |
 |---|---|---|---|---|---|
@@ -142,7 +142,7 @@ Exact customer addresses will not be generated.
 
 ---
 
-# 8. Date — dim_date
+# 8. Date â€” dim_date
 
 | Field | Data Type | Key | Required | Definition | Example |
 |---|---|---|---|---|---|
@@ -159,7 +159,7 @@ Exact customer addresses will not be generated.
 
 ---
 
-# 9. Transaction — fact_transaction
+# 9. Transaction â€” fact_transaction
 
 ### Grain
 
@@ -184,7 +184,7 @@ Exact customer addresses will not be generated.
 
 ---
 
-# 10. Fraud Outcome — fact_fraud_outcome
+# 10. Fraud Outcome â€” fact_fraud_outcome
 
 ### Grain
 
@@ -203,7 +203,7 @@ Exact customer addresses will not be generated.
 
 ---
 
-# 11. Fraud Alert — fact_fraud_alert
+# 11. Fraud Alert â€” fact_fraud_alert
 
 ### Grain
 
@@ -223,7 +223,7 @@ Exact customer addresses will not be generated.
 
 ---
 
-# 12. Investigation Case — fact_investigation_case
+# 12. Investigation Case â€” fact_investigation_case
 
 ### Grain
 
@@ -316,5 +316,4 @@ Any new field, removed field or changed definition shall be documented before im
 
 The data dictionary shall remain aligned with:
 
-Data Requirements → Data Model → Synthetic Data → Data Quality → SQL → Python → Machine Learning → Power BI.
-
+Data Requirements â†’ Data Model â†’ Synthetic Data â†’ Data Quality â†’ SQL â†’ Python â†’ Machine Learning â†’ Power BI.

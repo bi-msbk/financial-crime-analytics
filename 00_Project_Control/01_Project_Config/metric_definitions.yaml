@@ -1,0 +1,143 @@
+version: "1.0"
+
+purpose: >
+  Authoritative metric definitions for the Financial Crime Analytics &
+  Fraud Detection Platform. Metric definitions specify the analytical grain,
+  calculation logic and required source tables to prevent inconsistent
+  KPI calculations.
+
+principles:
+  - "Metrics must respect the approved table grain."
+  - "Transaction-level metrics must not be inflated by one-to-many joins."
+  - "Alert-level metrics must use alert grain."
+  - "Case-level metrics must use investigation-case grain."
+  - "Fraud detection metrics must count detected fraud transactions, not alerts."
+  - "All metric calculations must be reproducible."
+
+metrics:
+
+  KPI-001:
+    name: "Total Transactions"
+    grain: "transaction"
+    source_table: "fact_transaction"
+    measure_type: "count_distinct"
+    field: "transaction_id"
+    calculation: "COUNT(DISTINCT transaction_id)"
+    denominator: null
+
+  KPI-002:
+    name: "Fraud Transactions"
+    grain: "transaction"
+    source_table: "fact_transaction"
+    measure_type: "count_distinct"
+    field: "transaction_id"
+    filter: "fraud_flag = true"
+    calculation: "COUNT(DISTINCT transaction_id WHERE fraud_flag = true)"
+    denominator: null
+
+  KPI-003:
+    name: "Fraud Rate"
+    grain: "transaction"
+    source_table: "fact_transaction"
+    measure_type: "ratio"
+    numerator: "Fraud Transactions"
+    denominator: "Total Transactions"
+    calculation: "Fraud Transactions / Total Transactions"
+
+    KPI-004:
+    name: "Gross Fraud Loss"
+    grain: "transaction"
+    source_table: "fact_transaction"
+    measure_type: "sum"
+    field: "fraud_loss_amount"
+    filter: "fraud_flag = true"
+    calculation: "SUM(fraud_loss_amount WHERE fraud_flag = true)"
+    denominator: null
+    definition: >
+      Total confirmed financial loss associated with fraudulent transactions.
+      Non-fraud transactions must not contribute to the measure.
+
+  KPI-005:
+    name: "Average Fraud Value"
+    grain: "transaction"
+    source_table: "fact_transaction"
+    measure_type: "average"
+    field: "fraud_loss_amount"
+    filter: "fraud_flag = true"
+    calculation: "SUM(fraud_loss_amount) / Fraud Transactions"
+    denominator: "Fraud Transactions"
+
+  KPI-006:
+    name: "Control Detection Rate"
+    grain: "transaction"
+    source_table: "fact_transaction"
+    measure_type: "ratio"
+    numerator: "Detected Fraud Transactions"
+    denominator: "Fraud Transactions"
+    calculation: "Detected Fraud Transactions / Fraud Transactions"
+    definition: >
+      A fraudulent transaction is detected when at least one applicable
+      fraud-monitoring control generates an alert for that transaction.
+
+  KPI-007:
+    name: "Missed Fraud Rate"
+    grain: "transaction"
+    source_table: "fact_transaction"
+    measure_type: "ratio"
+    numerator: "Missed Fraud Transactions"
+    denominator: "Fraud Transactions"
+    calculation: "Missed Fraud Transactions / Fraud Transactions"
+    definition: >
+      A fraudulent transaction is missed when no applicable fraud-monitoring
+      control generates an alert for that transaction.
+
+  KPI-008:
+    name: "False Positive Rate"
+    grain: "alert"
+    source_table: "fact_fraud_alert"
+    measure_type: "ratio"
+    numerator: "Non-Fraud Alerts"
+    denominator: "Total Alerts"
+    calculation: "Non-Fraud Alerts / Total Alerts"
+    definition: >
+      An alert is a false positive when it is generated for a transaction
+      that is not confirmed fraudulent.
+
+  KPI-009:
+    name: "Alert Conversion Rate"
+    grain: "alert"
+    source_table: "fact_fraud_alert"
+    measure_type: "ratio"
+    numerator: "Confirmed Fraud Alerts"
+    denominator: "Total Alerts"
+    calculation: "Confirmed Fraud Alerts / Total Alerts"
+    definition: >
+      An alert is converted when the underlying transaction is confirmed
+      fraudulent.
+
+  KPI-010:
+    name: "High-Risk Cases"
+    grain: "case"
+    source_table: "fact_investigation_case"
+    measure_type: "count"
+    field: "case_id"
+    filter: "case_priority = high"
+    calculation: "COUNT(case_id WHERE case_priority = high)"
+
+  KPI-011:
+    name: "Open Cases"
+    grain: "case"
+    source_table: "fact_investigation_case"
+    measure_type: "count"
+    field: "case_id"
+    filter: "case_status = open"
+    calculation: "COUNT(case_id WHERE case_status = open)"
+
+  KPI-012:
+    name: "Average Investigation Time"
+    grain: "case"
+    source_table: "fact_investigation_case"
+    measure_type: "average"
+    field: "investigation_duration"
+    filter: "case_status = closed"
+    calculation: "AVG(investigation_duration WHERE case_status = closed)"

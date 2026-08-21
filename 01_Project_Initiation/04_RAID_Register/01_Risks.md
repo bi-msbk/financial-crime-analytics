@@ -8,4 +8,3 @@
 | R-006 | Scope may become too large                                        | High  | Medium | Maintain stage gates              |
 | R-007 | Dashboard may become overly complex                               | Medium| Medium | Design around business decisions  |
 | R-008 | Historical fraud labels may contain classification errors         | Medium| High   | Perform label-quality validation  |
-

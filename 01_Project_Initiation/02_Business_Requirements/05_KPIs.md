@@ -14,11 +14,3 @@
 | KPI-010 | High-Risk Cases             | Cases meeting high-risk criteria                  | COUNT(high_risk_case)                  | Operations |
 | KPI-011 | Open Cases                  | Currently unresolved investigation cases          | COUNT(open_case)                       | Operations |
 | KPI-012 | Average Investigation Time  | Average time to resolve a case                    | AVG(resolution_time)                   | Operations |
-
-
-
-
-
-
-
-

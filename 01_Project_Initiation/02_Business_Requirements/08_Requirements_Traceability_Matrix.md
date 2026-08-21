@@ -2,7 +2,7 @@
 
 The Requirements Traceability Matrix (RTM) links business requirements to analytical questions, functional requirements, KPIs, data requirements and expected analytical outputs.
 
-> **Note:** Detailed data requirements will be defined during Step 2 — Data Requirements & Architecture.
+> **Note:** Detailed data requirements will be defined during Step 2 â€” Data Requirements & Architecture.
 
 | BR ID | Business Requirement | AQ ID | FR ID | KPI | Data Requirement | Analytical Output |
 |---|---|---|---|---|---|---|

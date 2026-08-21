@@ -6,7 +6,7 @@ This document defines the approved specification for generating synthetic data f
 
 The synthetic dataset shall represent a realistic but fictional UK retail banking environment and shall support the analytical requirements established during Project Initiation and Data Requirements & Architecture.
 
-The specification provides the controlled handover from Step 2 — Data Requirements & Architecture to Step 3 — Data Generation.
+The specification provides the controlled handover from Step 2 â€” Data Requirements & Architecture to Step 3 â€” Data Generation.
 
 No real customer information, personally identifiable information or confidential banking data shall be used.
 
@@ -108,12 +108,12 @@ The initial target volumes shall be:
 | Accounts | 65,000 |
 | Merchants | 5,000 |
 | Devices | 75,000 |
-| Geography | 100–250 |
-| Fraud Rules | 15–25 |
+| Geography | 100â€“250 |
+| Fraud Rules | 15â€“25 |
 | Transactions | 2,000,000 |
-| Fraud Outcomes | Approximately 20,000–40,000 |
-| Fraud Alerts | Approximately 100,000–250,000 |
-| Investigation Cases | Approximately 30,000–80,000 |
+| Fraud Outcomes | Approximately 20,000â€“40,000 |
+| Fraud Alerts | Approximately 100,000â€“250,000 |
+| Investigation Cases | Approximately 30,000â€“80,000 |
 
 These are target ranges rather than mandatory exact counts.
 
@@ -375,7 +375,7 @@ Fraud shall represent a minority of transactions.
 
 Initial target:
 
-> Approximately **1%–2% of transactions** shall be confirmed fraudulent.
+> Approximately **1%â€“2% of transactions** shall be confirmed fraudulent.
 
 The final prevalence shall be measured after data generation.
 
@@ -428,6 +428,5 @@ New Device
 Unusual Geography
     +
 High Velocity
-    ↓
+    â†“
 Higher Fraud Risk
-

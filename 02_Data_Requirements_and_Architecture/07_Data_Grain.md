@@ -176,6 +176,6 @@ For example:
 
 ```text
 Transaction TXN001
-    ├── Alert A001 — Velocity Rule
-    ├── Alert A002 — Unusual Amount Rule
-    └── Alert A003 — New Device Rule
+    â”œâ”€â”€ Alert A001 â€” Velocity Rule
+    â”œâ”€â”€ Alert A002 â€” Unusual Amount Rule
+    â””â”€â”€ Alert A003 â€” New Device Rule

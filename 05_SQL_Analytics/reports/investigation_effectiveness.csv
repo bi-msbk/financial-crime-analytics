@@ -1,0 +1,2 @@
+total_cases,closed_cases,open_cases,closure_rate_pct,open_case_rate_pct,high_priority_cases,medium_priority_cases,low_priority_cases,confirmed_fraud_cases,false_positive_cases,confirmed_fraud_rate_pct,average_investigation_hours
+144450,99465.0,44985.0,68.86,31.14,51560.0,49302.0,43588.0,43852.0,0.0,100.0,5.08

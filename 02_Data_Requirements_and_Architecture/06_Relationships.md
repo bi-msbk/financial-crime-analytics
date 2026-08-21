@@ -8,7 +8,7 @@ The relationships are aligned with the approved Data Model and Data Dictionary.
 
 ---
 
-## 1. Customer → Account
+## 1. Customer â†’ Account
 
 ### Business Relationship
 
@@ -22,5 +22,5 @@ One customer may have one or more accounts.
 
 ```text
 dim_customer.customer_key
-        ↓
+        â†“
 dim_account.customer_key

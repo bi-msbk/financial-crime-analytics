@@ -1,0 +1,9 @@
+fraud_scenario,fraud_transaction_count,transaction_value,fraud_loss,average_fraud_loss,fraud_transaction_share_pct,fraud_loss_share_pct
+account_takeover,5948,3483990.85,2359413.83,396.67,19.83,19.89
+high_velocity,4542,2646630.86,1795572.67,395.33,15.14,15.14
+new_device,4557,2654552.21,1786351.4,392.0,15.19,15.06
+high_value,4544,2635956.76,1772279.96,390.03,15.15,14.94
+online_fraud,2980,1755844.05,1198624.54,402.22,9.93,10.11
+geographic_anomaly,2956,1739284.32,1186612.42,401.43,9.85,10.01
+behavioural_deviation,2986,1758785.7,1182591.58,396.05,9.95,9.97
+merchant_risk,1487,854713.33,578366.98,388.95,4.96,4.88

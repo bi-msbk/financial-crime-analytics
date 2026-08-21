@@ -345,29 +345,27 @@ An alert may result in zero or one investigation case in the analytical model.
 
 ```text
                        dim_customer
-                            │
-                            │
+                            â”‚
+                            â”‚
                        dim_account
-                            │
-                            │
-dim_merchant ─────── fact_transaction ─────── dim_device
-                            │
-                            │
+                            â”‚
+                            â”‚
+dim_merchant â”€â”€â”€â”€â”€â”€â”€ fact_transaction â”€â”€â”€â”€â”€â”€â”€ dim_device
+                            â”‚
+                            â”‚
                       dim_geography
-                            │
-                            │
+                            â”‚
+                            â”‚
                    fact_fraud_outcome
-                            │
-                            │
+                            â”‚
+                            â”‚
                      fact_fraud_alert
-                            │
-                            ├──── dim_fraud_rule
-                            │
-                            ↓
+                            â”‚
+                            â”œâ”€â”€â”€â”€ dim_fraud_rule
+                            â”‚
+                            â†“
                   fact_investigation_case
 
-dim_date ────────────────┬───────────────┬───────────────┐
-                         │               │               │
+dim_date â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”¬â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”
+                         â”‚               â”‚               â”‚
                   fact_transaction  fact_fraud_alert  fact_investigation_case
-
-                  

@@ -326,21 +326,21 @@ The primary conceptual relationships are:
 
 ```text
 Customer
-   │
-   └────< Account
-             │
-             └────< Transaction
-                       │
-                       ├────> Merchant
-                       │
-                       ├────> Device
-                       │
-                       ├────> Geography
-                       │
-                       ├────0..1 Fraud Outcome
-                       │
-                       └────< Fraud Alert
-                                │
-                                ├────> Fraud Rule
-                                │
-                                └────0..1 Investigation Case
+   â”‚
+   â””â”€â”€â”€â”€< Account
+             â”‚
+             â””â”€â”€â”€â”€< Transaction
+                       â”‚
+                       â”œâ”€â”€â”€â”€> Merchant
+                       â”‚
+                       â”œâ”€â”€â”€â”€> Device
+                       â”‚
+                       â”œâ”€â”€â”€â”€> Geography
+                       â”‚
+                       â”œâ”€â”€â”€â”€0..1 Fraud Outcome
+                       â”‚
+                       â””â”€â”€â”€â”€< Fraud Alert
+                                â”‚
+                                â”œâ”€â”€â”€â”€> Fraud Rule
+                                â”‚
+                                â””â”€â”€â”€â”€0..1 Investigation Case

@@ -15,21 +15,21 @@ It does not represent the internal systems, processes or architecture of any spe
 The project assumes the following conceptual source domains:
 
 Customer Management
-        ↓
+        â†“
 Account Management
-        ↓
+        â†“
 Transaction / Payments Platform
-        ↓
+        â†“
 Merchant / Device / Geographic Services
-        ↓
+        â†“
 Fraud Monitoring
-        ↓
+        â†“
 Fraud Outcome Management
-        ↓
+        â†“
 Investigation Management
-        ↓
+        â†“
 Analytical Data Platform
-        ↓
+        â†“
 Fraud Analytics & Reporting
 
 The conceptual architecture represents the logical flow of information rather than physical production systems.
@@ -84,7 +84,7 @@ It provides:
 
 The source design shall support the relationship:
 
-Customer → Account
+Customer â†’ Account
 
 ---
 
@@ -131,7 +131,7 @@ Merchant information will be entirely synthetic.
 
 The source design shall support the relationship:
 
-Merchant → Transaction
+Merchant â†’ Transaction
 
 ---
 
@@ -151,7 +151,7 @@ The source design shall support identification of devices that are new or previo
 
 The source design shall support the relationship:
 
-Device → Transaction
+Device â†’ Transaction
 
 ---
 
@@ -191,7 +191,7 @@ The source design shall support evaluation of individual fraud rules and overall
 
 The conceptual relationship is:
 
-Transaction → Fraud Rule Evaluation → Fraud Alert
+Transaction â†’ Fraud Rule Evaluation â†’ Fraud Alert
 
 ---
 
@@ -212,7 +212,7 @@ Fraud outcome information shall remain logically distinct from the original tran
 
 The conceptual relationship is:
 
-Transaction → Fraud Outcome
+Transaction â†’ Fraud Outcome
 
 This separation allows the project to distinguish transaction activity from the later fraud determination.
 
@@ -235,7 +235,7 @@ It provides:
 
 The conceptual relationship is:
 
-Fraud Alert → Investigation Case
+Fraud Alert â†’ Investigation Case
 
 This supports investigation prioritisation, open-case analysis and investigation-time analysis.
 
@@ -270,17 +270,17 @@ The conceptual data flow is:
 
 ```text
 Conceptual Source Domains
-          ↓
+          â†“
 Raw / Source-like Data
-          ↓
+          â†“
 Data Validation & Quality Checks
-          ↓
+          â†“
 Standardised Analytical Data
-          ↓
+          â†“
 SQL / Python / Fraud Analytics
-          ↓
+          â†“
 Machine Learning
-          ↓
+          â†“
 Power BI / Management Reporting
-          ↓
+          â†“
 Findings & Recommendations

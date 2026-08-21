@@ -1,0 +1,5 @@
+customer_segment,customer_count,fraud_transaction_count,fraud_loss,fraud_transaction_share_pct,fraud_loss_share_pct
+Top 1%,363,1274.0,970017.86,4.25,8.18
+Next 4%,1453,4132.0,2310608.51,13.77,19.48
+Next 5%,1816,4240.0,1995200.53,14.13,16.82
+Remaining 90%,32694,20354.0,6583986.48,67.85,55.52

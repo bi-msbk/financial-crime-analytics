@@ -6,9 +6,9 @@
 
 **Fictional Organisation:** Northbridge Bank
 
-**Business Area:** Retail Banking → Financial Crime → Fraud Analytics
+**Business Area:** Retail Banking â†’ Financial Crime â†’ Fraud Analytics
 
-**Primary Role:** Data Analyst — Financial Crime Analytics
+**Primary Role:** Data Analyst â€” Financial Crime Analytics
 
 **Project Type:** End-to-End Analytical Solution
 

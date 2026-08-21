@@ -1,0 +1,2 @@
+true_positive,false_positive,true_negative,false_negative,detection_rate_pct,false_positive_rate_pct,precision_pct,specificity_pct,f1_score
+28825.0,79080.0,1890920.0,1175.0,96.08,4.0142,26.71,95.99,0.418

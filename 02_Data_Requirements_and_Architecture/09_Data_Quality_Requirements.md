@@ -200,8 +200,7 @@ The following relationships must be validated:
 
 ```text
 Customer
-   ↓
+   â†“
 Account
-   ↓
+   â†“
 Transaction
-

@@ -1,13 +1,13 @@
 CUSTOMER
-   │
-   └── ACCOUNT
-          │
-          └── TRANSACTION
-                  │
-                  ├── FRAUD OUTCOME
-                  │
-                  └── FRAUD ALERT
-                         │
-                         ├── FRAUD RULE
-                         │
-                         └── INVESTIGATION CASE
+   â”‚
+   â””â”€â”€ ACCOUNT
+          â”‚
+          â””â”€â”€ TRANSACTION
+                  â”‚
+                  â”œâ”€â”€ FRAUD OUTCOME
+                  â”‚
+                  â””â”€â”€ FRAUD ALERT
+                         â”‚
+                         â”œâ”€â”€ FRAUD RULE
+                         â”‚
+                         â””â”€â”€ INVESTIGATION CASE

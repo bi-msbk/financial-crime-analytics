@@ -1,0 +1,10 @@
+analysis_dimension,segment,transaction_count,fraud_transaction_count,fraud_rate_pct,average_transaction_amount,fraud_loss
+Channel,Mobile,499367,10979.0,2.1986,90.9,3942099.96
+Channel,Online,600760,13055.0,2.1731,91.05,4733849.65
+Channel,Card Present,600117,4014.0,0.6689,91.08,2148014.5
+Channel,ATM,199505,1318.0,0.6606,90.84,686619.18
+Channel,Branch,100251,634.0,0.6324,91.02,349230.09
+Transaction Type,Transfer,400406,10994.0,2.7457,91.0,3600829.43
+Transaction Type,Cash Withdrawal,200938,2449.0,1.2188,91.0,1049316.47
+Transaction Type,Direct Debit,199742,2414.0,1.2086,91.0,1034473.71
+Transaction Type,Card Purchase,1198914,14143.0,1.1797,90.99,6175193.77

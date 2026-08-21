@@ -1,0 +1,6 @@
+rule_id,alert_count,true_positive_count,false_positive_count,precision_pct,false_positive_share_pct,alert_volume_share_pct
+RULE007,19868,19868.0,0.0,100.0,0.0,13.75
+RULE001,11155,10063.0,1092.0,90.21,9.79,7.72
+RULE002,21562,17006.0,4556.0,78.87,21.13,14.93
+RULE003,81187,16778.0,64409.0,20.67,79.33,56.2
+RULE005,10678,1090.0,9588.0,10.21,89.79,7.39

@@ -1,0 +1,649 @@
+version: "1.0"
+
+purpose: >
+  Machine-readable validation contract for the Financial Crime Analytics &
+  Fraud Detection Platform. These rules define the structural, integrity,
+  domain, temporal, fraud, control, investigation and behavioural conditions
+  that generated datasets must satisfy before release.
+
+governance:
+  fail_on_critical: true
+  fail_on_missing_table: true
+  fail_on_missing_column: true
+  fail_on_duplicate_primary_key: true
+  fail_on_broken_relationship: true
+  fail_on_invalid_grain: true
+
+severity:
+  critical: "Dataset cannot be released if the rule fails."
+  high: "Material analytical impact; failure requires review."
+  medium: "Limited analytical impact; failure must be documented."
+  low: "Minor issue; document if unresolved."
+
+thresholds:
+  critical_field_completeness: 0.995
+  primary_key_uniqueness: 1.0
+  referential_integrity: 0.999
+  domain_validity: 0.995
+  critical_rule_compliance: 1.0
+
+required_tables:
+
+  dimensions:
+    - dim_customer
+    - dim_account
+    - dim_merchant
+    - dim_device
+    - dim_geography
+    - dim_fraud_rule
+    - dim_date
+
+  facts:
+    - fact_transaction
+    - fact_fraud_outcome
+    - fact_fraud_alert
+    - fact_investigation_case
+
+primary_keys:
+
+  - rule_id: "DQ-PK-001"
+    table: "dim_customer"
+    field: "customer_id"
+    severity: "critical"
+
+  - rule_id: "DQ-PK-002"
+    table: "dim_account"
+    field: "account_id"
+    severity: "critical"
+
+  - rule_id: "DQ-PK-003"
+    table: "dim_merchant"
+    field: "merchant_id"
+    severity: "critical"
+
+  - rule_id: "DQ-PK-004"
+    table: "dim_device"
+    field: "device_id"
+    severity: "critical"
+
+  - rule_id: "DQ-PK-005"
+    table: "dim_geography"
+    field: "geography_id"
+    severity: "critical"
+
+  - rule_id: "DQ-PK-006"
+    table: "dim_fraud_rule"
+    field: "rule_id"
+    severity: "critical"
+
+  - rule_id: "DQ-PK-007"
+    table: "dim_date"
+    field: "date_key"
+    severity: "critical"
+
+  - rule_id: "DQ-PK-008"
+    table: "fact_transaction"
+    field: "transaction_id"
+    severity: "critical"
+
+  - rule_id: "DQ-PK-009"
+    table: "fact_fraud_outcome"
+    field: "fraud_outcome_id"
+    severity: "critical"
+
+  - rule_id: "DQ-PK-010"
+    table: "fact_fraud_alert"
+    field: "alert_id"
+    severity: "critical"
+
+  - rule_id: "DQ-PK-011"
+    table: "fact_investigation_case"
+    field: "case_id"
+    severity: "critical"
+
+required_fields:
+
+  dim_customer:
+    - customer_id
+    - customer_segment
+    - customer_age_band
+    - customer_region
+    - customer_status
+    - customer_onboarding_date
+
+  dim_account:
+    - account_id
+    - customer_id
+    - account_type
+    - account_status
+    - account_open_date
+    - account_region
+
+  dim_merchant:
+    - merchant_id
+    - merchant_name
+    - merchant_category
+    - merchant_region
+    - merchant_country
+    - merchant_status
+
+  dim_device:
+    - device_id
+    - device_type
+    - operating_system
+    - device_first_seen_date
+    - device_region
+
+  dim_geography:
+    - geography_id
+    - country
+    - region
+    - city_or_geographic_area
+    - latitude_band
+    - longitude_band
+
+  dim_fraud_rule:
+    - rule_id
+    - rule_name
+    - rule_category
+    - rule_description
+    - rule_status
+    - alert_threshold
+
+  dim_date:
+    - date_key
+    - calendar_date
+    - year
+    - quarter
+    - month
+    - week
+    - day_of_week
+    - is_weekend
+    - is_month_end
+
+  fact_transaction:
+    - transaction_id
+    - customer_id
+    - account_id
+    - transaction_timestamp
+    - transaction_amount
+    - currency
+    - transaction_type
+    - transaction_channel
+    - merchant_id
+    - device_id
+    - geography_id
+    - transaction_country
+    - transaction_region
+    - transaction_status
+    - fraud_flag
+    - fraud_type
+    - fraud_loss_amount
+
+  fact_fraud_outcome:
+    - fraud_outcome_id
+    - transaction_id
+    - fraud_type
+    - fraud_confirmed_date
+    - fraud_loss_amount
+    - fraud_outcome_source
+
+  fact_fraud_alert:
+    - alert_id
+    - transaction_id
+    - rule_id
+    - alert_timestamp
+    - alert_status
+    - alert_outcome
+    - confirmed_fraud_flag
+
+  fact_investigation_case:
+    - case_id
+    - alert_id
+    - transaction_id
+    - case_created_timestamp
+    - case_closed_timestamp
+    - case_priority
+    - case_status
+    - case_outcome
+
+relationships:
+
+  - rule_id: "DQ-REL-001"
+    parent_table: "dim_customer"
+    parent_key: "customer_id"
+    child_table: "dim_account"
+    child_key: "customer_id"
+    cardinality: "1:N"
+    nullable: false
+    severity: "critical"
+
+  - rule_id: "DQ-REL-002"
+    parent_table: "dim_account"
+    parent_key: "account_id"
+    child_table: "fact_transaction"
+    child_key: "account_id"
+    cardinality: "1:N"
+    nullable: false
+    severity: "critical"
+
+  - rule_id: "DQ-REL-003"
+    parent_table: "dim_customer"
+    parent_key: "customer_id"
+    child_table: "fact_transaction"
+    child_key: "customer_id"
+    cardinality: "1:N"
+    nullable: false
+    severity: "critical"
+
+  - rule_id: "DQ-REL-004"
+    parent_table: "dim_merchant"
+    parent_key: "merchant_id"
+    child_table: "fact_transaction"
+    child_key: "merchant_id"
+    cardinality: "1:N"
+    nullable: true
+    severity: "high"
+
+  - rule_id: "DQ-REL-005"
+    parent_table: "dim_device"
+    parent_key: "device_id"
+    child_table: "fact_transaction"
+    child_key: "device_id"
+    cardinality: "1:N"
+    nullable: true
+    severity: "high"
+
+  - rule_id: "DQ-REL-006"
+    parent_table: "dim_geography"
+    parent_key: "geography_id"
+    child_table: "fact_transaction"
+    child_key: "geography_id"
+    cardinality: "1:N"
+    nullable: false
+    severity: "critical"
+
+  - rule_id: "DQ-REL-007"
+    parent_table: "fact_transaction"
+    parent_key: "transaction_id"
+    child_table: "fact_fraud_outcome"
+    child_key: "transaction_id"
+    cardinality: "1:0..1"
+    nullable: false
+    severity: "critical"
+
+  - rule_id: "DQ-REL-008"
+    parent_table: "fact_transaction"
+    parent_key: "transaction_id"
+    child_table: "fact_fraud_alert"
+    child_key: "transaction_id"
+    cardinality: "1:0..N"
+    nullable: false
+    severity: "critical"
+
+  - rule_id: "DQ-REL-009"
+    parent_table: "dim_fraud_rule"
+    parent_key: "rule_id"
+    child_table: "fact_fraud_alert"
+    child_key: "rule_id"
+    cardinality: "1:N"
+    nullable: false
+    severity: "critical"
+
+  - rule_id: "DQ-REL-010"
+    parent_table: "fact_fraud_alert"
+    parent_key: "alert_id"
+    child_table: "fact_investigation_case"
+    child_key: "alert_id"
+    cardinality: "1:0..1"
+    nullable: true
+    severity: "high"
+
+  - rule_id: "DQ-REL-011"
+    parent_table: "fact_transaction"
+    parent_key: "transaction_id"
+    child_table: "fact_investigation_case"
+    child_key: "transaction_id"
+    cardinality: "1:N"
+    nullable: false
+    severity: "critical"
+
+grain:
+
+  - rule_id: "DQ-GRAIN-001"
+    table: "dim_customer"
+    grain: "one row per customer"
+    key: "customer_id"
+    severity: "critical"
+
+  - rule_id: "DQ-GRAIN-002"
+    table: "dim_account"
+    grain: "one row per account"
+    key: "account_id"
+    severity: "critical"
+
+  - rule_id: "DQ-GRAIN-003"
+    table: "dim_merchant"
+    grain: "one row per merchant"
+    key: "merchant_id"
+    severity: "critical"
+
+  - rule_id: "DQ-GRAIN-004"
+    table: "dim_device"
+    grain: "one row per device"
+    key: "device_id"
+    severity: "critical"
+
+  - rule_id: "DQ-GRAIN-005"
+    table: "dim_geography"
+    grain: "one row per geography"
+    key: "geography_id"
+    severity: "critical"
+
+  - rule_id: "DQ-GRAIN-006"
+    table: "dim_fraud_rule"
+    grain: "one row per fraud rule"
+    key: "rule_id"
+    severity: "critical"
+
+  - rule_id: "DQ-GRAIN-007"
+    table: "dim_date"
+    grain: "one row per calendar date"
+    key: "date_key"
+    severity: "critical"
+
+  - rule_id: "DQ-GRAIN-008"
+    table: "fact_transaction"
+    grain: "one row per financial transaction"
+    key: "transaction_id"
+    severity: "critical"
+
+  - rule_id: "DQ-GRAIN-009"
+    table: "fact_fraud_outcome"
+    grain: "one row per fraud outcome"
+    key: "fraud_outcome_id"
+    severity: "critical"
+
+  - rule_id: "DQ-GRAIN-010"
+    table: "fact_fraud_alert"
+    grain: "one row per fraud-monitoring alert"
+    key: "alert_id"
+    severity: "critical"
+
+  - rule_id: "DQ-GRAIN-011"
+    table: "fact_investigation_case"
+    grain: "one row per investigation case"
+    key: "case_id"
+    severity: "critical"
+
+domain_rules:
+
+  transaction:
+    transaction_amount:
+      rule_id: "DQ-DOM-001"
+      rule: "greater_than_zero"
+      severity: "critical"
+
+    currency:
+      rule_id: "DQ-DOM-002"
+      allowed_values:
+        - "GBP"
+      severity: "high"
+
+    fraud_flag:
+      rule_id: "DQ-DOM-003"
+      allowed_values:
+        - true
+        - false
+      severity: "critical"
+
+  customer:
+    customer_status:
+      rule_id: "DQ-DOM-004"
+      allowed_values:
+        - "Active"
+        - "Inactive"
+        - "Closed"
+      severity: "high"
+
+  account:
+    account_status:
+      rule_id: "DQ-DOM-005"
+      allowed_values:
+        - "Active"
+        - "Inactive"
+        - "Closed"
+      severity: "high"
+
+temporal_rules:
+
+  - rule_id: "DQ-TEMP-001"
+    name: "Account opened before transaction"
+    child_table: "fact_transaction"
+    child_timestamp: "transaction_timestamp"
+    parent_table: "dim_account"
+    parent_date: "account_open_date"
+    rule: "transaction_timestamp >= account_open_date"
+    severity: "critical"
+
+  - rule_id: "DQ-TEMP-002"
+    name: "Customer onboarded before transaction"
+    child_table: "fact_transaction"
+    child_timestamp: "transaction_timestamp"
+    parent_table: "dim_customer"
+    parent_date: "customer_onboarding_date"
+    rule: "transaction_timestamp >= customer_onboarding_date"
+    severity: "critical"
+
+  - rule_id: "DQ-TEMP-003"
+    name: "Device first seen before transaction"
+    child_table: "fact_transaction"
+    child_timestamp: "transaction_timestamp"
+    parent_table: "dim_device"
+    parent_date: "device_first_seen_date"
+    rule: "transaction_timestamp >= device_first_seen_date"
+    severity: "high"
+
+  - rule_id: "DQ-TEMP-004"
+    name: "Fraud confirmation after transaction"
+    child_table: "fact_fraud_outcome"
+    child_timestamp: "fraud_confirmed_date"
+    parent_table: "fact_transaction"
+    parent_date: "transaction_timestamp"
+    rule: "fraud_confirmed_date >= transaction_timestamp"
+    severity: "critical"
+
+  - rule_id: "DQ-TEMP-005"
+    name: "Case closure after case creation"
+    table: "fact_investigation_case"
+    rule: >
+      case_status != 'Closed' OR
+      case_closed_timestamp >= case_created_timestamp
+    severity: "critical"
+
+fraud_rules:
+
+  - rule_id: "DQ-FRAUD-001"
+    name: "Fraud flag requires valid outcome"
+    rule: >
+      fraud_flag = false OR
+      transaction_id exists in fact_fraud_outcome
+    severity: "critical"
+
+  - rule_id: "DQ-FRAUD-002"
+    name: "Non-fraud cannot have confirmed fraud loss"
+    rule: >
+      fraud_flag = true OR
+      fraud_loss_amount IS NULL OR
+      fraud_loss_amount = 0
+    severity: "critical"
+
+  - rule_id: "DQ-FRAUD-003"
+    name: "Fraud loss cannot be negative"
+    rule: "fraud_loss_amount >= 0"
+    severity: "critical"
+
+  - rule_id: "DQ-FRAUD-004"
+    name: "Confirmed fraud outcome must reference fraudulent transaction"
+    rule: >
+      fact_fraud_outcome.transaction_id exists in fact_transaction
+      AND referenced transaction fraud_flag = true
+    severity: "critical"
+
+  - rule_id: "DQ-FRAUD-005"
+    name: "Fraud prevalence must remain minority"
+    rule: "fraud_prevalence < 0.50"
+    severity: "high"
+
+control_rules:
+
+  - rule_id: "DQ-CTRL-001"
+    name: "Alert must reference valid transaction"
+    rule: "fact_fraud_alert.transaction_id exists in fact_transaction"
+    severity: "critical"
+
+  - rule_id: "DQ-CTRL-002"
+    name: "Alert must reference valid fraud rule"
+    rule: "fact_fraud_alert.rule_id exists in dim_fraud_rule"
+    severity: "critical"
+
+  - rule_id: "DQ-CTRL-003"
+    name: "Confirmed fraud flag must match transaction"
+    rule: >
+      fact_fraud_alert.confirmed_fraud_flag =
+      referenced transaction fraud_flag
+    severity: "critical"
+
+  - rule_id: "DQ-CTRL-004"
+    name: "False positive alert consistency"
+    rule: >
+      confirmed_fraud_flag = false
+      implies referenced transaction fraud_flag = false
+    severity: "high"
+
+  - rule_id: "DQ-CTRL-005"
+    name: "True positive alert consistency"
+    rule: >
+      confirmed_fraud_flag = true
+      implies referenced transaction fraud_flag = true
+    severity: "high"
+
+  - rule_id: "DQ-CTRL-006"
+    name: "Detection rate must be within logical bounds"
+    rule: "0 <= detection_rate <= 1"
+    severity: "critical"
+
+  - rule_id: "DQ-CTRL-007"
+    name: "False positive rate must be within logical bounds"
+    rule: "0 <= false_positive_rate <= 1"
+    severity: "critical"
+
+investigation_rules:
+
+  - rule_id: "DQ-CASE-001"
+    name: "Case must reference transaction"
+    rule: "fact_investigation_case.transaction_id exists in fact_transaction"
+    severity: "critical"
+
+  - rule_id: "DQ-CASE-002"
+    name: "Case alert reference must be valid when populated"
+    rule: >
+      alert_id IS NULL OR
+      alert_id exists in fact_fraud_alert
+    severity: "high"
+
+  - rule_id: "DQ-CASE-003"
+    name: "Closed case requires closure timestamp"
+    rule: >
+      case_status != 'Closed' OR
+      case_closed_timestamp IS NOT NULL
+    severity: "high"
+
+  - rule_id: "DQ-CASE-004"
+    name: "Open case must not have closure timestamp"
+    rule: >
+      case_status != 'Open' OR
+      case_closed_timestamp IS NULL
+    severity: "high"
+
+  - rule_id: "DQ-CASE-005"
+    name: "Investigation duration must be non-negative"
+    rule: "investigation_duration >= 0"
+    severity: "critical"
+
+  - rule_id: "DQ-CASE-006"
+    name: "Case alert relationship must respect approved grain"
+    rule: "One alert may have zero or one investigation case"
+    severity: "critical"
+
+behavioural_rules:
+
+  - rule_id: "DQ-BHV-001"
+    name: "Fraud must remain a minority class"
+    rule: "fraud_prevalence < 0.50"
+    severity: "high"
+
+  - rule_id: "DQ-BHV-002"
+    name: "Fraud scenarios must not be perfectly deterministic"
+    rule: >
+      Risk indicators may occur in both fraudulent and non-fraudulent
+      transactions.
+    severity: "high"
+
+  - rule_id: "DQ-BHV-003"
+    name: "Transaction amounts must contain variation"
+    rule: "transaction_amount_distribution_has_variance"
+    severity: "medium"
+
+  - rule_id: "DQ-BHV-004"
+    name: "Customers must exhibit transaction-frequency variation"
+    rule: "customer_transaction_frequency_distribution_has_variance"
+    severity: "medium"
+
+  - rule_id: "DQ-BHV-005"
+    name: "Devices must support legitimate reuse"
+    rule: "device_reuse_exists"
+    severity: "medium"
+
+  - rule_id: "DQ-BHV-006"
+    name: "Geographic activity must contain legitimate variation"
+    rule: "geographic_activity_distribution_has_variance"
+    severity: "medium"
+
+  - rule_id: "DQ-BHV-007"
+    name: "Multiple fraud scenarios must be represented"
+    rule: "fraud_scenario_distribution_has_multiple_categories"
+    severity: "high"
+
+reproducibility:
+
+  required_metadata:
+    - dataset_version
+    - generation_version
+    - configuration_version
+    - random_seed
+    - python_version
+    - package_versions
+    - generation_timestamp
+    - reference_start_date
+    - reference_end_date
+    - generation_status
+
+release_gates:
+
+  critical_failures:
+    action: "BLOCK_RELEASE"
+
+  high_failures:
+    action: "REVIEW_REQUIRED"
+
+  medium_failures:
+    action: "DOCUMENT_AND_REVIEW"
+
+  low_failures:
+    action: "DOCUMENT_IF_UNRESOLVED"
+
+overall_status:
+  pass_condition: >
+    No critical validation failures and no unresolved high-severity
+    failures without documented approval.

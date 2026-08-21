@@ -1,0 +1,3 @@
+population,transaction_count,transaction_value,average_transaction_amount,median_transaction_amount,maximum_transaction_amount,average_fraud_loss
+Fraud,30000,17529758.08,584.33,478.52,7628.0,395.33
+Non-Fraud,1970000,164465338.15,83.48,54.09,2120.26,0.0

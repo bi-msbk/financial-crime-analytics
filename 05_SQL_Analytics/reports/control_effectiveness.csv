@@ -1,0 +1,2 @@
+total_alerts,true_positive_alerts,false_positive_alerts,false_negative_alerts,detection_rate_pct,false_positive_rate_among_alerts_pct,precision_pct
+144450.0,64805.0,79645.0,0.0,100.0,55.14,44.86

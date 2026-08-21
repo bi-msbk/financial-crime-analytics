@@ -1,0 +1,41 @@
+project:
+  name: "Financial Crime Analytics & Fraud Detection Platform"
+  dataset_version: "v1.0"
+  generation_version: "v1.0"
+
+generation:
+  random_seed: 20260817
+  reference_start_date: "2024-01-01"
+  reference_end_date: "2025-12-31"
+  base_currency: "GBP"
+
+volumes:
+  customers: 50000
+  accounts: 65000
+  merchants: 5000
+  devices: 75000
+  transactions: 2000000
+
+fraud:
+  target_prevalence: 0.015
+  scenario_weights:
+    account_takeover: 0.20
+    high_value: 0.15
+    high_velocity: 0.15
+    new_device: 0.15
+    geographic_anomaly: 0.10
+    online_fraud: 0.10
+    merchant_risk: 0.05
+    behavioural_deviation: 0.10
+
+controls:
+  target_detection_rate: 0.70
+  target_false_positive_rate: 0.08
+
+investigations:
+  case_creation_rate: 0.35
+  open_case_rate: 0.10
+
+output:
+  format: "parquet"
+  compression: "snappy"

@@ -25,22 +25,21 @@ The lineage is conceptual and does not represent the internal architecture of an
 
 ```text
 Synthetic Source-like Data
-            ↓
+            â†“
 Raw / Source-like Data
-            ↓
+            â†“
 Data Validation & Quality Checks
-            ↓
+            â†“
 Analytical Data Model
-            ↓
+            â†“
 SQL Analytics
-            ↓
+            â†“
 Python Analytics
-            ↓
+            â†“
 Fraud Detection & Risk Indicators
-            ↓
+            â†“
 Machine Learning
-            ↓
+            â†“
 Power BI Reporting
-            ↓
+            â†“
 Management & Investigation Outputs
-

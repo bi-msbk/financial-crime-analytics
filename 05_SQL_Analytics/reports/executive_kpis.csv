@@ -1,0 +1,2 @@
+transaction_count,total_transaction_value,fraud_transaction_count,fraud_rate_pct,total_fraud_loss,average_fraud_loss,average_transaction_amount,maximum_transaction_amount
+2000000,181995096.23,30000.0,1.5,11859813.38,395.33,91.0,7628.0

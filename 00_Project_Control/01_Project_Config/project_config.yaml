@@ -1,0 +1,147 @@
+project:
+  name: "Financial Crime Analytics & Fraud Detection Platform"
+  domain: "Financial Crime Analytics"
+  focus: "Fraud Detection"
+  geography: "UK"
+  environment: "Synthetic"
+  currency: "GBP"
+
+governance:
+  pii_allowed: false
+  real_customer_data_allowed: false
+  confidential_banking_data_allowed: false
+  reproducibility_required: true
+  human_approval_required: true
+
+lifecycle:
+  current_phase: 3
+  current_phase_name: "Data Generation"
+  next_phase: 4
+  next_phase_name: "Data Quality"
+
+entities:
+  - customer
+  - account
+  - transaction
+  - merchant
+  - device
+  - geography
+  - fraud_rule
+  - fraud_outcome
+  - fraud_alert
+  - investigation_case
+
+analytical_tables:
+
+  dimensions:
+    - dim_customer
+    - dim_account
+    - dim_merchant
+    - dim_device
+    - dim_geography
+    - dim_fraud_rule
+    - dim_date
+
+  facts:
+    - fact_transaction
+    - fact_fraud_outcome
+    - fact_fraud_alert
+    - fact_investigation_case
+
+grain:
+
+  dim_customer:
+    description: "One row per customer"
+
+  dim_account:
+    description: "One row per account"
+
+  dim_merchant:
+    description: "One row per merchant"
+
+  dim_device:
+    description: "One row per device"
+
+  dim_geography:
+    description: "One row per geographic reference entity"
+
+  dim_fraud_rule:
+    description: "One row per fraud-monitoring rule"
+
+  dim_date:
+    description: "One row per calendar date"
+
+  fact_transaction:
+    description: "One row per financial transaction"
+
+  fact_fraud_outcome:
+    description: "One row per fraud outcome associated with a transaction"
+
+  fact_fraud_alert:
+    description: "One row per fraud-monitoring alert"
+
+  fact_investigation_case:
+    description: "One row per investigation case"
+
+relationships:
+
+  - parent: customer
+    child: account
+    cardinality: "1:N"
+
+  - parent: account
+    child: transaction
+    cardinality: "1:N"
+
+  - parent: merchant
+    child: transaction
+    cardinality: "1:N"
+
+  - parent: device
+    child: transaction
+    cardinality: "1:N"
+
+  - parent: geography
+    child: transaction
+    cardinality: "1:N"
+
+  - parent: fraud_rule
+    child: fraud_alert
+    cardinality: "1:N"
+
+  - parent: transaction
+    child: fraud_alert
+    cardinality: "1:N"
+
+  - parent: fraud_alert
+    child: investigation_case
+    cardinality: "0:1"
+
+  - parent: transaction
+    child: fraud_outcome
+    cardinality: "0:1"
+
+fraud:
+  expected_minor_class: true
+  patterns_should_be_non_deterministic: true
+  patterns_should_be_analytically_identifiable: true
+
+data_quality:
+  primary_key_uniqueness_required: true
+  referential_integrity_required: true
+  critical_field_completeness_required: true
+  domain_validation_required: true
+  temporal_validation_required: true
+
+validation:
+  fail_on_unknown_entity: true
+  fail_on_unknown_table: true
+  fail_on_duplicate_identifier: true
+  fail_on_broken_relationship: true
+  fail_on_invalid_grain: true
+  fail_on_required_file_missing: true
+
+approval:
+  status: "Draft"
+  approved_by: null
+  approved_date: null

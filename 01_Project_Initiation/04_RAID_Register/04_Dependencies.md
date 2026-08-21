@@ -1,17 +1,17 @@
 Requirements
-     ↓
+     â†“
 Data Model
-     ↓
+     â†“
 Data Generation
-     ↓
+     â†“
 Data Quality
-     ↓
+     â†“
 SQL
-     ↓
+     â†“
 Python
-     ↓
+     â†“
 Model
-     ↓
+     â†“
 Power BI
 
 D-001 --> Data generation depends on approved data requirements.
